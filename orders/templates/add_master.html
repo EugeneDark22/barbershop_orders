@@ -121,6 +121,9 @@
                                 {{ service.name }} ({{ service.price }} грн)<br>
                             {% endfor %}
                         </td>
+                        <td>
+                            <a href="{% url 'delete_master' master.id %}" class="delete-button">❌ Видалити</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

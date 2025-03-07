@@ -56,6 +56,7 @@
                     <th>Клієнт</th>
                     <th>Номер телефону</th>
                     <th>Послуги</th>
+                    <th>Знижка</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,10 +69,18 @@
                         <td>{{ appointment.phone_number }}</td>
                         <td>
                             {% for service in appointment.services.all %}
-                                {{ service.name }}{% if not forloop.last %}, {% endif %}
-                            {% empty %}
-                                Немає послуг
+                                {{ service.name }} ({{ service.price }} грн)<br>
                             {% endfor %}
+                        </td>
+                        <td>
+                            {% if appointment.discount > 0 %}
+                                <strong>{{ appointment.discount }}%</strong>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'delete_appointment' appointment.id %}" class="delete-button">❌ Видалити</a>
                         </td>
                     </tr>
                 {% endfor %}

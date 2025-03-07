@@ -107,6 +107,9 @@
                         <td>{{ service.name }}</td>
                         <td>{{ service.description }}</td>
                         <td>{{ service.price }} грн</td>
+                        <td>
+                            <a href="{% url 'delete_service' service.id %}" class="delete-button">❌ Видалити</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -57,6 +57,9 @@
                     <tr>
                         <td>{{ client.client_name }}</td>
                         <td>{{ client.phone_number }}</td>
+                        <td>
+                            <a href="{% url 'delete_client' client.client_name %}" class="delete-button">❌ Видалити</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30a30403-3dd8-462c-a607-ec6856d654c4" name="Changes" comment="" />
+    <list default="true" id="30a30403-3dd8-462c-a607-ec6856d654c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/barbershop_orders/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/barbershop_orders/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/add_master.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/add_master.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/clients.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/clients.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/templates/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/orders/templates/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +37,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -30,22 +48,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.barbershop_orders.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.barbershop_orders.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\korop\PycharmProjects\barbershop_orders\orders" />
@@ -95,7 +113,8 @@
       <option name="presentableId" value="Default" />
       <updated>1741279905861</updated>
       <workItem from="1741279907185" duration="10686000" />
-      <workItem from="1741327982633" duration="7767000" />
+      <workItem from="1741327982633" duration="7954000" />
+      <workItem from="1741346263430" duration="5204000" />
     </task>
     <servers />
   </component>

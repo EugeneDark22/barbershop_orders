@@ -64,4 +64,8 @@
             <button type="submit" class="appointment-button">Записатися</button>
         </div>
     </form>
+
+    {% if form.instance.discount %}
+        <p class="discount-info">Цьому клієнту доступна знижка: <strong>{{ form.instance.discount }}%</strong></p>
+    {% endif %}
 {% endblock %}

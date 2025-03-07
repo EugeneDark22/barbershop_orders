@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.db.models import Count, Sum
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from orders.forms import ManagerRegistrationForm, AppointmentForm, MasterForm, ServiceForm, ReportFilterForm
@@ -57,10 +57,11 @@ def appointment_view(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')  # Перенаправлення на головну сторінку після запису
+            appointment = form.save()
+            return redirect('home')
     else:
         form = AppointmentForm()
+
     return render(request, 'appointment.html', {'form': form})
 
 
@@ -124,3 +125,38 @@ def reports_view(request):
         }
 
     return render(request, 'reports.html', {'form': form, 'reports_data': reports_data})
+
+@login_required(login_url='login')
+def delete_appointment(request, appointment_id):
+    """
+    Видаляє запис клієнта до майстра.
+    """
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    appointment.delete()
+    return redirect('home')  # Перенаправлення на головну після видалення
+
+@login_required(login_url='login')
+def delete_client(request, client_name):
+    """
+    Видаляє всі записи клієнта за ім'ям.
+    """
+    Appointment.objects.filter(client_name=client_name).delete()
+    return redirect('clients_list')  # Повернення на сторінку клієнтів
+
+@login_required(login_url='login')
+def delete_master(request, master_id):
+    """
+    Видаляє майстра.
+    """
+    master = get_object_or_404(Master, id=master_id)
+    master.delete()
+    return redirect('add_master')  # Повернення на сторінку майстрів
+
+@login_required(login_url='login')
+def delete_service(request, service_id):
+    """
+    Видаляє послугу.
+    """
+    service = get_object_or_404(Service, id=service_id)
+    service.delete()
+    return redirect('services_list')  # Повернення на сторінку послуг

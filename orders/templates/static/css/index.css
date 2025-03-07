@@ -107,3 +107,17 @@ header {
 .appointments-table .edit-button:hover {
     color: #1b5e20;
 }
+
+.delete-button {
+    display: inline-block;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}

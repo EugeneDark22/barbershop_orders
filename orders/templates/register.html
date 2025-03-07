@@ -8,19 +8,122 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Реєстрація менеджера</h2>
-        <form method="post">
+    <div class="register-container">
+        <h2 class="register-title">Реєстрація</h2>
+
+        <form method="post" class="register-form">
             {% csrf_token %}
+
             {% for field in form %}
-                <div>
-                    <label>{{ field.label }}</label>
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
                     {{ field }}
+                    {% if field.errors %}
+                        <span class="error-message">{{ field.errors.0 }}</span>
+                    {% endif %}
                 </div>
             {% endfor %}
 
-            <button type="submit">Зареєструватися</button>
+            <button type="submit" class="register-button">Зареєструватися</button>
         </form>
+
+        <p class="login-link">Вже маєте акаунт? <a href="{% url 'login' %}">Увійти</a></p>
     </div>
+
+    <style>
+        /* Контейнер форми */
+        .register-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 80px;
+            background-color: #d4f4c9;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .register-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Група для кожного поля */
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        /* Підписи до полів */
+        .form-label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        /* Поля вводу */
+        .register-container input,
+        .register-container select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f7fff0;
+        }
+
+        /* Фокус на полях */
+        .register-container input:focus,
+        .register-container select:focus {
+            border-color: #66bb6a;
+            outline: none;
+            box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
+        }
+
+        /* Кнопка */
+        .register-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7bc043;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .register-button:hover {
+            background-color: #66a33c;
+        }
+
+        /* Повідомлення про помилку */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Посилання на вхід */
+        .login-link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </body>
 </html>
