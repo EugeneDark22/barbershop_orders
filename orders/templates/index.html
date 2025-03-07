@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+    <style>
+        /* Таблиця найближчих записів у стилі як на картинці */
+        .appointments-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .appointments-table th, .appointments-table td {
+            padding: 12px;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .appointments-table th {
+            background-color: #b2df8a;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .appointments-table tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        .appointments-table tr:nth-child(odd) {
+            background-color: #dcedc8;
+        }
+
+        .appointments-table tr:hover {
+            background-color: #c5e1a5;
+        }
+    </style>
+
+    <h1>Ласкаво просимо до системи обліку замовлень</h1>
+
+    <h2>Найближчі записи</h2>
+    {% if upcoming_appointments %}
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Час</th>
+                    <th>Майстер</th>
+                    <th>Клієнт</th>
+                    <th>Номер телефону</th>
+                    <th>Послуги</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in upcoming_appointments %}
+                    <tr>
+                        <td>{{ appointment.appointment_date }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+                        <td>{{ appointment.master.full_name }}</td>
+                        <td>{{ appointment.client_name }}</td>
+                        <td>{{ appointment.phone_number }}</td>
+                        <td>
+                            {% for service in appointment.services.all %}
+                                {{ service.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                Немає послуг
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Запланованих записів немає.</p>
+    {% endif %}
+{% endblock %}

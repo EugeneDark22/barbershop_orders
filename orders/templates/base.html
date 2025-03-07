@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Система обліку{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logout-button">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout_view' %}">Вийти</a>
+                {% endif %}
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="{% url 'home' %}">Головна</a></li>
+                    <li><a href="{% url 'clients_list' %}">Клієнти</a></li>
+                    <li><a href="{% url 'add_master' %}">Майстри</a></li>
+                    <li><a href="{% url 'appointment' %}">Запис</a></li>
+                    <li><a href="{% url 'services_list' %}">Послуги</a></li>
+                    <li><a href="{% url 'reports_view' %}">Звіти</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                {% if user.is_authenticated %}
+                    Ви увійшли як: {{ user.username }}
+                {% else %}
+                    <a href="{% url 'login' %}">Увійти</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

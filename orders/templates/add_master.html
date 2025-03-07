@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Додати майстра{% endblock %}
+
+{% block content %}
+    <style>
+        /* Основний контейнер форми */
+        .master-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Стилі для заголовка */
+        .master-title {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Поля вводу */
+        .master-input, .master-textarea, .master-number {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Кнопка відправки */
+        .master-button {
+            background-color: #99cc33;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .master-button:hover {
+            background-color: #88bb22;
+        }
+
+        /* Центрування форми */
+        .master-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Стилі для таблиці майстрів */
+        .masters-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .masters-table th, .masters-table td {
+            padding: 12px;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .masters-table th {
+            background-color: #b2df8a;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .masters-table tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        .masters-table tr:nth-child(odd) {
+            background-color: #dcedc8;
+        }
+
+        .masters-table tr:hover {
+            background-color: #c5e1a5;
+        }
+    </style>
+
+    <h2 class="master-title">Додати майстра</h2>
+    <form method="post" class="master-form">
+        {% csrf_token %}
+        <div class="master-container">
+            {{ form.as_p }}
+            <button type="submit" class="master-button">Додати майстра</button>
+        </div>
+    </form>
+
+    <h2 class="master-title">Список майстрів</h2>
+    {% if masters %}
+        <table class="masters-table">
+            <thead>
+                <tr>
+                    <th>ПІБ</th>
+                    <th>Послуги</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for master in masters %}
+                    <tr>
+                        <td>{{ master.full_name }}</td>
+                        <td>
+                            {% for service in master.services.all %}
+                                {{ service.name }} ({{ service.price }} грн)<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Майстрів поки що немає.</p>
+{% endif %}
+
+{% endblock %}

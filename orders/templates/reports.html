@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Звіти{% endblock %}
+
+{% block content %}
+    <style>
+        .report-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-title {
+            text-align: center;
+            color: #333;
+        }
+
+        .report-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .report-list li {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
+
+    <h2 class="report-title">Формування звітів</h2>
+    <form method="get" class="report-form">
+        {{ form.as_p }}
+        <button type="submit">Згенерувати звіт</button>
+    </form>
+
+    {% if reports_data %}
+        <div class="report-container">
+            <h3>Результати</h3>
+            <ul class="report-list">
+                <li>Загальна кількість послуг: {{ reports_data.total_services }}</li>
+                <li>Загальний прибуток: {{ reports_data.total_revenue }} грн</li>
+                <li>Найпопулярніша послуга: {{ reports_data.popular_service }}</li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

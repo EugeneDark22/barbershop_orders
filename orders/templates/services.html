@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Послуги{% endblock %}
+
+{% block content %}
+    <style>
+        /* Основний контейнер форми */
+        .service-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-title {
+            text-align: center;
+            color: #333;
+        }
+
+        .service-input, .service-textarea, .service-number {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .service-button {
+            background-color: #99cc33;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .service-button:hover {
+            background-color: #88bb22;
+        }
+
+        .services-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .services-table th, .services-table td {
+            padding: 12px;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .services-table th {
+            background-color: #b2df8a;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .services-table tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        .services-table tr:nth-child(odd) {
+            background-color: #dcedc8;
+        }
+
+        .services-table tr:hover {
+            background-color: #c5e1a5;
+        }
+    </style>
+
+    <h2 class="service-title">Додати послугу</h2>
+    <form method="post" class="service-form">
+        {% csrf_token %}
+        <div class="service-container">
+            {{ form.as_p }}
+            <button type="submit" class="service-button">Додати послугу</button>
+        </div>
+    </form>
+
+    <h2 class="service-title">Список послуг</h2>
+    {% if services %}
+        <table class="services-table">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Опис</th>
+                    <th>Ціна</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                    <tr>
+                        <td>{{ service.name }}</td>
+                        <td>{{ service.description }}</td>
+                        <td>{{ service.price }} грн</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Послуг поки що немає.</p>
+    {% endif %}
+{% endblock %}

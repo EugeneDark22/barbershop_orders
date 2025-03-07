@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація менеджера</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Реєстрація менеджера</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Зареєструватися</button>
+        </form>
+    </div>
+</body>
+</html>

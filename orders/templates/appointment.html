@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Запис клієнтів{% endblock %}
+
+{% block content %}
+    <style>
+        /* Основний контейнер форми */
+        .appointment-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Стилі для заголовка */
+        .appointment-title {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Поля вводу */
+        .appointment-input, .appointment-select, .appointment-textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Кнопка відправки */
+        .appointment-button {
+            background-color: #99cc33;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .appointment-button:hover {
+            background-color: #88bb22;
+        }
+
+        /* Центрування форми */
+        .appointment-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <h2 class="appointment-title">Запис клієнтів до майстра</h2>
+    <form method="post" class="appointment-form">
+        {% csrf_token %}
+        <div class="appointment-container">
+            {{ form.as_p }}
+            <button type="submit" class="appointment-button">Записатися</button>
+        </div>
+    </form>
+{% endblock %}

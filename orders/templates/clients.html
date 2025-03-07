@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Клієнти{% endblock %}
+
+{% block content %}
+    <style>
+        /* Таблиця клієнтів */
+        .clients-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .clients-table th, .clients-table td {
+            padding: 12px;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .clients-table th {
+            background-color: #b2df8a;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .clients-table tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        .clients-table tr:nth-child(odd) {
+            background-color: #dcedc8;
+        }
+
+        .clients-table tr:hover {
+            background-color: #c5e1a5;
+        }
+    </style>
+
+    <h2>Список клієнтів</h2>
+    {% if clients %}
+        <table class="clients-table">
+            <thead>
+                <tr>
+                    <th>ПІБ клієнта</th>
+                    <th>Номер телефону</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.client_name }}</td>
+                        <td>{{ client.phone_number }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Записів клієнтів немає.</p>
+    {% endif %}
+{% endblock %}
